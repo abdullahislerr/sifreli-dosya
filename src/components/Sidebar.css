@@ -1,0 +1,99 @@
+.sidebar-container {
+  width: 220px;
+  height: 100vh;
+  background-color: #ffffff;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  overflow: hidden; /* köşe taşmalarını engellemek için */
+  position: relative;
+  z-index: 0;
+}
+.sidebar-container.collapsed {
+  width: 50px;
+}
+
+.sidebar-header {
+  background-color: #e0e0e0;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top-right-radius: 20px;
+  padding: 0 1rem;
+  position: relative;
+}
+
+.sidebar-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #444;
+  text-align: center;
+  flex: 1;
+}
+
+.sidebar-toggle {
+  position: absolute;
+  right: 15px ;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  color: #333;
+  font-size: 1.5rem;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+  z-index: 2;
+}
+
+.sidebar-toggle:hover {
+  background-color: #d6d6d6;
+}
+
+.sidebar-list {
+  list-style: none;
+  padding: 1rem;
+  margin: 0;
+  flex: 1;
+}
+
+.sidebar-list li {
+  margin-bottom: 1rem;
+}
+
+.sidebar-list li a {
+  display: block;
+  text-decoration: none;
+  color: #333;
+  padding: 0.7rem 1rem;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.sidebar-list li a:hover {
+  background-color: #1976d2;
+  color: white;
+}
+
+.sidebar-list li a.active {
+  background-color: #eeeeee;
+  color: #000;
+}
+
+/* Sağ kenarda sabit gri çizgi */
+.sidebar-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50px;
+  height: 100%;
+  background-color: #e0e0e0;
+  border-top-right-radius: 40px;
+  border-bottom-right-radius: 20px;
+  z-index: 1;
+}
