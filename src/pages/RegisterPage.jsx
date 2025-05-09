@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import { auth } from "../firebase";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  updateProfile,
+  sendEmailVerification,
+} from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import "./RegisterPage.css"; // CSS dosyasını ekliyoruz
+import "./RegisterPage.css";
 
 const RegisterPage = () => {
   const [ad, setAd] = useState("");
@@ -19,12 +23,19 @@ const RegisterPage = () => {
 
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, sifre);
+
       await updateProfile(userCredential.user, {
         displayName: `${ad} ${soyad}`,
       });
+
+      // ✅ E-posta doğrulama bağlantısını gönder
+      await sendEmailVerification(userCredential.user);
+
+      alert("Kayıt başarılı! Lütfen e-posta adresinize gelen doğrulama bağlantısına tıklayın.");
       navigate("/login");
     } catch (err) {
-      setHata(err.message);
+      console.error(err);
+      setHata("Kayıt başarısız: " + err.message);
     }
   };
 

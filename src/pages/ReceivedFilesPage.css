@@ -1,0 +1,130 @@
+.received-container {
+  padding: 2rem;
+  background-color: #f9f9f9;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* Başlık */
+.received-title {
+  text-align: center;
+  color: #2a6cd3;
+  margin-bottom: 1.5rem;
+}
+
+/* Form ve Şifre Girişi */
+.received-form,
+.received-file-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.received-form input,
+.received-file-info input {
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.received-form button,
+.received-file-info button {
+  padding: 0.8rem;
+  background-color: #2a6cd3;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.received-form button:hover,
+.received-file-info button:hover {
+  background-color: #1c54a0;
+}
+
+.received-form button[disabled],
+.received-file-info button[disabled] {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Hata ve Başarı Mesajları */
+.received-error {
+  color: red;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.received-success {
+  color: green;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+/* Geçmiş Tablosu */
+.received-history {
+  margin: 3rem auto 2rem;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 10px;
+  max-width: 900px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+
+  /* 🧩 Tablo kutusu sabit yükseklikte olacak */
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+/* Başlık */
+.received-history h3 {
+  margin-bottom: 1.2rem;
+  text-align: center;
+  color: #333;
+}
+
+/* Tablo */
+.received-history-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 6px;
+  overflow: hidden;
+  min-width: 600px;
+}
+
+/* Satırlar */
+.received-history-table th,
+.received-history-table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  font-size: 0.95rem;
+}
+
+/* Başlıklar sabit kalabilir istersen */
+.received-history-table th {
+  background-color: #f0f4f9;
+  color: #2a6cd3;
+  font-weight: bold;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+/* Son satır çizgisiz */
+.received-history-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Boş veri mesajı */
+.received-history-table td[colspan="4"] {
+  text-align: center;
+  font-style: italic;
+  color: #888;
+  padding: 1.5rem;
+}

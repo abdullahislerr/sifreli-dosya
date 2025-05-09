@@ -51,4 +51,44 @@
   .upload-popup-box button:hover {
     background-color: #1565c0;
   }
+  .upload-popup {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400px;
+    margin: auto;
+  }
+  
+  .upload-popup p {
+    margin: 0.5rem 0;
+  }
+  
+  .popup-warning {
+    font-size: 0.9rem;
+    color: #888;
+    margin-top: 1rem;
+  }
+  
+  .upload-popup button {
+    margin-top: 1.5rem;
+    padding: 0.7rem 1.2rem;
+    background-color: #2a6cd3;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+  
+  .upload-popup button:hover:not(:disabled) {
+    background-color: #1c54a0;
+  }
+  
+  .upload-popup button:disabled {
+    background-color: #bbb;
+    cursor: not-allowed;
+  }
   

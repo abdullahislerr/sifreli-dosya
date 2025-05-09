@@ -1,5 +1,11 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import {
+  Home,
+  Send,
+  Inbox,
+  Menu,
+} from "lucide-react";
 import "./Sidebar.css";
 
 const Sidebar = () => {
@@ -10,40 +16,34 @@ const Sidebar = () => {
     setCollapsed(!collapsed);
   };
 
+  const navItems = [
+    { path: "/", label: "Ana Sayfa", icon: <Home size={20} /> },
+    { path: "/sent", label: "Gönderilenler", icon: <Send size={20} /> },
+    { path: "/received", label: "Gelenler", icon: <Inbox size={20} /> },
+  ];
+
   return (
     <div className={`sidebar-container ${collapsed ? "collapsed" : ""}`}>
       <div className="sidebar-header">
         {!collapsed && <h2 className="sidebar-title">Menü</h2>}
         <div className="sidebar-toggle" onClick={toggleSidebar}>
-          ☰
+          <Menu size={24} />
         </div>
       </div>
 
-      {!collapsed && (
-        <ul className="sidebar-list">
-          <li>
-            <Link to="/" className={location.pathname === "/" ? "active" : ""}>
-              Ana Sayfa
-            </Link>
-          </li>
-          <li>
+      <ul className="sidebar-list">
+        {navItems.map((item) => (
+          <li key={item.path}>
             <Link
-              to="/sent"
-              className={location.pathname === "/sent" ? "active" : ""}
+              to={item.path}
+              className={location.pathname === item.path ? "active" : ""}
             >
-              Gönderilenler
+              <span className="icon">{item.icon}</span>
+              {!collapsed && <span className="label">{item.label}</span>}
             </Link>
           </li>
-          <li>
-            <Link
-              to="/received"
-              className={location.pathname === "/received" ? "active" : ""}
-            >
-              Gelenler
-            </Link>
-          </li>
-        </ul>
-      )}
+        ))}
+      </ul>
     </div>
   );
 };

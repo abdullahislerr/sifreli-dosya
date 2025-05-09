@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { auth } from "../firebase";
-import { Link } from "react-router-dom"; 
+import { Link } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import "./LoginPage.css";
@@ -17,7 +17,14 @@ const LoginPage = () => {
     setHata("");
 
     try {
-      await signInWithEmailAndPassword(auth, email, sifre);
+      const userCredential = await signInWithEmailAndPassword(auth, email, sifre);
+
+      // ✅ E-posta doğrulanmış mı kontrol et
+      if (!userCredential.user.emailVerified) {
+        setHata("E-posta adresiniz doğrulanmamış. Lütfen gelen bağlantıya tıklayın.");
+        return;
+      }
+
       navigate("/"); // Giriş başarılıysa anasayfaya yönlendir
     } catch (err) {
       setHata("Giriş başarısız: " + err.message);
@@ -44,10 +51,11 @@ const LoginPage = () => {
         />
         <button type="submit" className="login-page-button">Giriş Yap</button>
       </form>
+
       <p className="login-page-link">
-  Hesabın yok mu?{" "}
-  <Link to="/register">Kayıt ol</Link>
-</p>
+        Hesabın yok mu? <Link to="/register">Kayıt ol</Link>
+      </p>
+
       {hata && <p className="login-page-error">{hata}</p>}
     </div>
   );

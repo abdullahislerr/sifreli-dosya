@@ -50,4 +50,24 @@
     background-color: #ccc;
     cursor: not-allowed;
   }
+  .upload-button:disabled {
+    background-color: #bbb;
+    cursor: not-allowed;
+  }
+  
+  .upload-button {
+    padding: 0.8rem 1.5rem;
+    background-color: #2a6cd3;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  .upload-button:hover:not(:disabled) {
+    background-color: #1c54a0;
+  }
+  
+
   
